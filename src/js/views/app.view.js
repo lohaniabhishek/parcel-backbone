@@ -1,9 +1,5 @@
-// Import Underscore for templating
-var _ = require('underscore');
 var appViewTemplate = require('../templates/app.view.ejs');
-var ejs = require('ejs');
-var _ = require('underscore');
-// Import Backbone and its dependencies
+import templateHelper from '../../utils/templateHelper';;
 var Backbone = require('backbone');
 import "../../css/local.css";
 import "../../scss/local.scss";
@@ -20,8 +16,16 @@ var viewOptions = {
 
   render: function () {
     // Render the template
-    var renderedHtml = ejs.render(appViewTemplate, { _, messages: ["I", "am", "working"], imgPath: img });
-    this.$el.html(renderedHtml);
+
+    const data = {
+      messages: [
+        "lorem",
+        "ipsum"
+      ],
+      imgPath: img
+    };
+
+    this.$el.html(templateHelper(appViewTemplate, data));
   }
 };
 
